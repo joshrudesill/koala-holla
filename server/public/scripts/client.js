@@ -5,7 +5,10 @@ function getKoalas() {
   // axios call to server to get koalas
   axios
     .get("/koalas")
-    .then((response) => refreshDOM(response))
+    .then((response) => {
+      console.log(response.data);
+      refreshDOM(response.data);
+    })
     .catch((err) => console.error(err));
 } // end getKoalas
 
@@ -21,7 +24,7 @@ function refreshDOM(data) {
       ready_to_transfer: rtt,
       notes,
     } = koala;
-    domNode += `
+    domNode.innerHTML += `
     <tr>
       <td>${name}</td>
       <td>${age}</td>
@@ -30,11 +33,11 @@ function refreshDOM(data) {
       <td>${notes}</td>
       ${
         !rtt
-          ? `<td><button onclick='markReady(${id}}'>Mark Ready</button></td>`
+          ? `<td><button onclick='markReady(${id})'>Mark Ready</button></td>`
           : ""
       }
       
-      <td><button onclick='deleteRow(${id}}'>Delete</button></td>
+      <td><button onclick='deleteRow(${id})'>Delete</button></td>
     </tr>
     `;
   }
@@ -49,8 +52,8 @@ function saveKoala() {
   console.log("in saveKoala");
   let data = {
     name: document.querySelector("#nameIn"),
-    age: document.querySelector("#ageIn"),
     favorite_color: document.querySelector("#colorIn"),
+    age: document.querySelector("#ageIn"),
     ready_to_transfer: document.querySelector("#readyForTransferIn"),
     notes: document.querySelector("#notesIn"),
   };
