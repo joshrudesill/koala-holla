@@ -34,7 +34,7 @@ function refreshDOM(data) {
       ${
         !rtt
           ? `<td><button onclick='markReady(${id})'>Mark Ready</button></td>`
-          : ""
+          : `<td><button onclick='markReady(${id})'>Mark UnReady</button></td>`
       }
       
       <td><button onclick='deleteRow(${id})'>Delete</button></td>
@@ -48,16 +48,28 @@ function deleteRow(id) {
     .then((_) => getKoalas())
     .catch((err) => console.error(err));
 }
-function saveKoala() {
+function saveKoala(event) {
+  event.preventDefault();
   console.log("in saveKoala");
+  let name = document.querySelector("#nameIn");
+  let favorite_color = document.querySelector("#colorIn");
+  let age = document.querySelector("#ageIn");
+  let ready_to_transfer = document.querySelector("#readyForTransferIn");
+  let notes = document.querySelector("#notesIn");
   let data = {
-    name: document.querySelector("#nameIn"),
-    favorite_color: document.querySelector("#colorIn"),
-    age: document.querySelector("#ageIn"),
-    ready_to_transfer: document.querySelector("#readyForTransferIn"),
-    notes: document.querySelector("#notesIn"),
+    name: name.value,
+    favorite_color: favorite_color.value,
+    age: age.value,
+    ready_to_transfer: ready_to_transfer.value,
+    notes: notes.value,
   };
   // axios call to server to get koalas
+  name.value = "";
+  favorite_color.value = "";
+  age.value = "";
+  ready_to_transfer.value = "";
+  notes.value = "";
+  data.value = "";
   axios({ method: "POST", url: "/koalas", data: data })
     .then((_) => getKoalas())
     .catch((err) => console.error(err));
