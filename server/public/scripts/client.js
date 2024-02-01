@@ -1,5 +1,7 @@
 console.log("js");
-
+let data = []; // Original data
+let filteredData = []; // filtered data - only use when input has text
+let domData = []; // dom data which is whats being rendered - either filtered or not
 function getKoalas() {
   console.log("in getKoalas");
   // axios call to server to get koalas
@@ -7,15 +9,32 @@ function getKoalas() {
     .get("/koalas")
     .then((response) => {
       console.log(response.data);
-      refreshDOM(response.data);
+      data = response.data;
+      domData = data;
+      refreshDOM();
     })
     .catch((err) => console.error(err));
 } // end getKoalas
+function filtering(event) {
+  if (event.target.value !== "") {
+    filteredData = data.filter((koala) => {
+      if (koala.name.includes(event.target.value)) {
+        return true;
+      }
+      return false;
+    });
 
-function refreshDOM(data) {
+    domData = filteredData;
+  } else {
+    domData = data;
+  }
+  refreshDOM();
+}
+
+function refreshDOM() {
   let domNode = document.querySelector("#viewKoalas");
   domNode.innerHTML = "";
-  for (const koala of data) {
+  for (const koala of domData) {
     const {
       id,
       name,
