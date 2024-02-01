@@ -59,5 +59,11 @@ function saveKoala() {
     .then((_) => getKoalas())
     .catch((err) => console.error(err));
 }
+function markReady(id) {
+  axios
+    .put(`/koalas/${id}`)
+    .then((_) => getKoalas())
+    .catch((err) => console.error(err));
+}
 
 getKoalas();
