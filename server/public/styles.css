@@ -1,21 +1,21 @@
 header {
-    background-color: aqua;
-    text-align: center;
-    display: flex;
-    /* align-items: center; */
+  background-color: aqua;
+  text-align: center;
+  display: flex;
+  /* align-items: center; */
 }
 
 img {
-    border-radius: 10%;
-    max-width: 100px;
-    max-height: 100px;
-    height: auto;
-    width: auto;
-    display: block;
+  border-radius: 10%;
+  max-width: 150px;
+  max-height: 150px;
+  height: auto;
+  width: auto;
+  display: block;
 }
 
 .bigFont {
-    font-size: xx-large;
+  font-size: xx-large;
 }
 
 /* h3 {
