@@ -2,6 +2,7 @@ console.log("js");
 let data = []; // Original data
 let filteredData = []; // filtered data - only use when input has text
 let domData = []; // dom data which is whats being rendered - either filtered or not
+
 function getKoalas() {
   console.log("in getKoalas");
   // axios call to server to get koalas
@@ -62,11 +63,28 @@ function refreshDOM() {
   }
 }
 function deleteRow(id) {
-  axios
+  Swal.fire({
+    title:'Are you sure you want to delete this koala?',
+    showDenyButton:true,
+    showCancelButton: true,
+    confirmButtonText: 'Yes',
+    denyButtonText: 'No',
+}) 
+.then((res) => {
+  if(res.isConfirmed) {
+    axios
     .delete(`/koalas/${id}`)
-    .then((_) => getKoalas())
+    .then((result) => {
+     getKoalas()
+    })
     .catch((err) => console.error(err));
-}
+    Swal.fire('Koala was successfully deleted!')
+  } else if (res.isDenied) {
+    Swal.fire('Koala was not deleted!')
+  }
+})
+}  
+
 function saveKoala(event) {
   event.preventDefault();
   console.log("in saveKoala");
