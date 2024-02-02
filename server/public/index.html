@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Koalla Holla</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script defer src="scripts/client.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <header>
-      <img src="images/icon.png" class="icon" />
-      <h1>Koala Holla</h1>
-      <h3>1976 Llama Comma Drive</h3>
-      <h3>Walla Walla, WA</h3>
-    </header>
-    <section id="addKoala">
-      <h2>Add Koala</h2>
-      <form onsubmit="saveKoala(event)">
-        <input id="filter" onkeyup="filtering(event)" />
-        <input
-          type="text"
-          id="nameIn"
-          value=""
-          placeholder="Name"
-          maxlength="20"
-          required
-        />
-        <input type="number" id="ageIn" value="" placeholder="Age" required />
-        <input
-          type="text"
-          id="colorIn"
-          value=""
-          placeholder="Favorite Color"
-          maxlength="20"
-          required
-        />
-        <select id="readyForTransferIn">
-          <option value="true">True</option>
-          <option value="False">False</option>
-        </select>
-        <input
-          type="text"
-          id="notesIn"
-          value=""
-          placeholder="Notes"
-          maxlength="256"
-        />
-        <button type="submit" id="addButton">Add Koala</button>
-      </form>
-    </section>
-    <section>
-      <h2>All Koalas</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Favorite Color</th>
-            <th>Ready for Transfer</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody id="viewKoalas"></tbody>
-      </table>
-    </section>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Koalla Holla</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script defer src="scripts/client.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <header>
+    <img src="images/icon.png" class="icon" />
+    <div>
+      <div class="bigFont">Koala Holla</div>
+      <div>1976 Llama Comma Drive</div>
+      <div>Walla Walla, WA</div>
+    </div>
+  </header>
+  <section id="addKoala">
+    <h2>Add Koala</h2>
+    <form onsubmit="saveKoala(event)">
+      <input id="filter" onkeyup="filtering(event)" />
+      <input type="text" id="nameIn" value="" placeholder="Name" maxlength="20" required />
+      <input type="number" id="ageIn" value="" placeholder="Age" required />
+      <input type="text" id="colorIn" value="" placeholder="Favorite Color" maxlength="20" required />
+      <select id="readyForTransferIn">
+        <option value="true">True</option>
+        <option value="False">False</option>
+      </select>
+      <input type="text" id="notesIn" value="" placeholder="Notes" maxlength="256" />
+      <button type="submit" id="addButton">Add Koala</button>
+    </form>
+  </section>
+  <section>
+    <h2>All Koalas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Favorite Color</th>
+          <th>Ready for Transfer</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="viewKoalas"></tbody>
+    </table>
+  </section>
+</body>
+
 </html>
